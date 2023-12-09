@@ -5,7 +5,9 @@ import {
   HiHome, 
   HiOutlineUserCircle,
   HiOutlineChevronDoubleLeft,
-  HiOutlineChevronDoubleRight 
+  HiOutlineChevronDoubleRight, 
+  HiChat,
+  HiBell
 } from 'react-icons/hi';
 const Sidebar: React.FC = () => {
   const [open, setOpen] = useState(true);
@@ -20,9 +22,15 @@ const Sidebar: React.FC = () => {
       </div>
       
       <ul className="py-2">
+      <li>
+          <a href="/" className="flex items-center p-3 text-white rounded-md bg-gray-900">
+            <HiHome className="text-2xl mr-3" />
+            {open && 'Home'}
+          </a>
+        </li>
         <li>
           <a href="/dao" className="flex items-center p-3 text-white rounded-md bg-gray-900">
-            <HiHome className="text-2xl mr-3" />
+            <HiChat className="text-2xl mr-3" />
             {open && 'Chat'}
           </a>
         </li>
@@ -31,6 +39,12 @@ const Sidebar: React.FC = () => {
           <a href="/dao/vote" className="flex items-center p-3 text-gray-400 rounded-md hover:bg-gray-800 hover:text-white">
             <HiOutlineUserCircle className="text-2xl mr-3" />
             {open && 'Forum'}
+          </a>
+        </li>
+        <li>
+          <a href="/" className="flex items-center p-3 text-white rounded-md bg-gray-900">
+            <HiBell className="text-2xl mr-3" />
+            {open && ''}
           </a>
         </li>
       </ul>

@@ -60,15 +60,18 @@ export default function Home() {
     <div style={{display:"flex",justifyContent:'center',alignItems:"center",height:"60vh",padding:60}}>
 
     <div style={{width:"50vw",display:'flex',justifyContent:'center',alignItems:"center",flexDirection:'column'}}>
-    <h1 style={{fontSize:60}}>
+    <h1 className="px-20" style={{fontSize:60}}>
   <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
   </LinearGradient>
 </h1>
+<div style={{paddingLeft:"-110px"}}>
 <ConnectButton/>
+
 </div>
-    <div style={{display:"flex",justifyContent:'center',alignItems:"center",width:"50vw"}}>
-      <Image style={{height:400}} src={bgI}></Image>
+</div>
+    <div style={{display:"flex",justifyContent:'center',alignItems:"center",width:"50vw",}}>
+      <Image style={{height:500, width:500, paddingRight:" -121px"}} src={bgI}></Image>
       </div>
     </div>
     <Cards/>

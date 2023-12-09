@@ -68,13 +68,28 @@ export const sendVote = async (waku: LightNode, pollMessage: IPollMessage) => {
 
 export const retrieveExistingVotes = async (
   waku: LightNode,
-  callback: (pollMessage: IPollMessage) => void,
+  callback: (pollMessage: IPollMessage) => void, 
 ) => {
+
   const _callback = (wakuMessage: DecodedMessage): void => {
     if (!wakuMessage.payload) return;
-    const pollMessageObj = PPollMessage.decode(wakuMessage.payload);
-    const pollMessage = pollMessageObj.toJSON() as IPollMessage;
-    callback(pollMessage);
+
+    try {
+      // Wrap decode call in try/catch
+      const pollMessageObj = PPollMessage.decode(wakuMessage.payload);  
+
+      // Additional validation  
+      if(!pollMessageObj || !pollMessageObj.toJSON) {
+        throw new Error('Invalid payload')  
+      }
+
+      const pollMessage = pollMessageObj.toJSON() as IPollMessage;
+      callback(pollMessage);
+
+    } catch (error) {
+      // Handle errors 
+      console.log('Decoding error', error); 
+    }
   };
 
   // Query the Store peer
