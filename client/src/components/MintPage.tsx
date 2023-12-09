@@ -108,12 +108,8 @@ export default function MintPage() {
     <Grid minH="100vh" p={3}>
       <VStack spacing={9} minWidth="300px" width="75vw" justifySelf="center">
         <VStack spacing={1} width="100%">
-          <Text alignSelf="start" textAlign="left" fontSize="4xl" fontWeight="bold">Mint your Menshen ID (MEID)</Text>
-          <Text alignSelf="start" textAlign="left" fontSize="2xl">Menshen ID is a verifiable credential that proves that you are a human without sharing any of your personal data.</Text>
-          <Spacer />
-          <Spacer />
-          <Spacer />
-          <Input placeholder="Paste your credentials here" value={credentials} onChange={(e) => setCredentials(e.target.value)}/>
+          <Text alignSelf="start" textAlign="left" fontSize="4xl" fontWeight="bold">Mint your Proof of Personhood</Text>
+          <Input placeholder="Paste your proof here" value={credentials} onChange={(e) => setCredentials(e.target.value)}/>
           <Button m={6} colorScheme="teal" onClick={clickMint} isLoading={isLoading} width="50%">Mint </Button>
           {errorReason && <Alert status="error" textAlign="left">
             <AlertIcon />

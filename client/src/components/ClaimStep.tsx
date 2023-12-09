@@ -5,7 +5,8 @@ import {
   Box,
   Button,
   Text,
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
+import Style from "./App.module.css"
 
 
 export default function ClaimStep({faceDescriptor}: {faceDescriptor: Float32Array}) {
@@ -52,13 +53,12 @@ export default function ClaimStep({faceDescriptor}: {faceDescriptor: Float32Arra
 
     return(
         <>
-        <Text fontSize="3xl" fontWeight="bold" textAlign="left">Claim Credential</Text>
-        <Text textAlign="left">You have successfully proved your humanity. Claim your credential below.</Text>
+        <Text fontSize="3xl" fontWeight="" color={"#fff"} textAlign="left">Claim Proof of Personhood</Text>
         <Container>
         <Box>
-            <Button colorScheme='teal' isLoading={isLoading} onClick={generateCredential}>Claim credential</Button>
+            <Button className={Style.btn} colorScheme='rgb(120,32,178)' isLoading={isLoading} onClick={generateCredential}>Claim credential</Button>
             {credential !== null && 
-                <Text mt={4} textAlign="left">Your credential: {credential.toString()}</Text>
+                <Text mt={4}  color={"#fff"} textAlign="left">Proof: {credential.toString()}</Text>
             }
             
         </Box>

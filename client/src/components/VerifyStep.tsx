@@ -11,9 +11,11 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-  ModalCloseButton
+  ModalCloseButton,
+  Center
 } from '@chakra-ui/react'
 import * as faceapi from 'face-api.js'
+import Style from "./App.module.css";
 
 import VerifyModal from './VerifyModal';
 
@@ -24,13 +26,9 @@ export default function VerifyStep({incrementStep, faceDescriptor, setFaceDescri
   const [descriptor1, setDescriptor1] = useState(new Float32Array)
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  const disclosureText = "Your personal data is not stored by Menshen or any third parties. It is used to create a credential that cannot be tied back to your PII."
 
   function renderStep() {
-    return <Box>
-      <Button colorScheme='teal' onClick={onOpen} m={4}>Verify</Button>
-      <Text mt={4} textAlign="left" fontSize="sm" textColor={"grey"}><b>Your privacy is preserved. </b>{disclosureText}</Text>
-    </Box>
+  return <Button colorScheme='rgb(120,32,178)' className={Style.btn} onClick={onOpen} m={4}>Verify</Button>
   }
 
   return(
@@ -41,13 +39,12 @@ export default function VerifyStep({incrementStep, faceDescriptor, setFaceDescri
       <Modal isOpen={isOpen} onClose={onClose} size='xxl'>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Face Scan</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <VerifyModal setFaceDescriptor={setFaceDescriptor}/>
           </ModalBody>
-          <ModalFooter>
-            <Button colorScheme='teal' isDisabled={(faceDescriptor.length == 0)} onClick={() => {
+          <ModalFooter alignItems={"center"} >
+            <Button colorScheme='rgb(120,32,178)' className={Style.btn} isDisabled={(faceDescriptor.length == 0)} onClick={() => {
               onClose()
               incrementStep()
               }} mr={3}>

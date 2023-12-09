@@ -4,7 +4,8 @@ import {
   Button
 } from '@chakra-ui/react'
 import {useLocation} from 'react-router-dom'
-import * as faceapi from 'face-api.js'
+import * as faceapi from 'face-api.js';
+import Style from "./App.module.css"
 
 
 export default function VerifyModal({setFaceDescriptor}: {setFaceDescriptor: any}) {
@@ -91,9 +92,9 @@ export default function VerifyModal({setFaceDescriptor}: {setFaceDescriptor: any
 
 
   return (
-    <Box textAlign="center" fontSize="xl">
-      <Box textAlign='center' p={10}>
-      <Button onClick={captureVideo && modelsLoaded ? closeWebcam : startVideo} colorScheme='teal' mb={6}>
+    <Box textAlign="center" fontSize="xl" className={Style.bg}>
+      <Box textAlign='center' p={4}>
+      <Button onClick={captureVideo && modelsLoaded ? closeWebcam : startVideo} colorScheme='rgb(120,32,178)' className={Style.btn}  mb={6}>
         {captureVideo ? 'Stop Scan' : 'Start Scan'}
       </Button>
       <Box display='flex' justifyContent='center'>
