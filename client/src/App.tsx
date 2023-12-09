@@ -17,10 +17,6 @@ import MintPage from './components/MintPage'
 
 export const App = () => (
   <ChakraProvider theme={theme}>
-    <Box display="flex" alignItems="center" padding="10px" borderBottom="1px solid lightgrey">
-      <Logo height='2em' width='72px'/>
-      <Heading>Menshen </Heading>
-    </Box>
     <BrowserRouter >
       <Routes>
         <Route path="/" element={<AppContainer />} />

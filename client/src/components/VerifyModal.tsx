@@ -1,17 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {
-  Modal,
-  Container,
-  Heading,
   Box,
-  Button,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  Flex,
-  Spacer,
+  Button
 } from '@chakra-ui/react'
 import {useLocation} from 'react-router-dom'
 import * as faceapi from 'face-api.js'

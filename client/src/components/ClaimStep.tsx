@@ -1,23 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import {
-  ChakraProvider,
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
-  AccordionIcon,
-  Input,
   Container,
   Heading,
   Box,
   Button,
   Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  Flex,
-  Spacer,
 } from '@chakra-ui/react'
 
 

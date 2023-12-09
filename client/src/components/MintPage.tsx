@@ -60,7 +60,7 @@ export default function MintPage() {
       if (ethereum) {
         const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
-        const connectedContract = new ethers.Contract(MENSHENID_CONTRACT_ADDRESS_GOERLI, MenshenID.abi, signer);
+        const connectedContract = new ethers.Contract(MENSHENID_CONTRACT_ADDRESS_HARDHAT, MenshenID.abi, signer);
 
         setIsLoading(true)
 
@@ -107,21 +107,14 @@ export default function MintPage() {
     <Box textAlign="center" fontSize="xl">
     <Grid minH="100vh" p={3}>
       <VStack spacing={9} minWidth="300px" width="75vw" justifySelf="center">
-        {/* <ColorModeSwitcher justifySelf="flex-end" /> */}
         <VStack spacing={1} width="100%">
-          <Spacer />
-          <Spacer />
-          <Spacer />
           <Text alignSelf="start" textAlign="left" fontSize="4xl" fontWeight="bold">Mint your Menshen ID (MEID)</Text>
           <Text alignSelf="start" textAlign="left" fontSize="2xl">Menshen ID is a verifiable credential that proves that you are a human without sharing any of your personal data.</Text>
           <Spacer />
           <Spacer />
           <Spacer />
           <Input placeholder="Paste your credentials here" value={credentials} onChange={(e) => setCredentials(e.target.value)}/>
-          <Button m={6} colorScheme="teal" onClick={clickMint} isLoading={isLoading} width="50%">Mint MEID</Button>
-          <Spacer />
-          <Spacer />
-          <Spacer />
+          <Button m={6} colorScheme="teal" onClick={clickMint} isLoading={isLoading} width="50%">Mint </Button>
           {errorReason && <Alert status="error" textAlign="left">
             <AlertIcon />
             <Box width="100%">

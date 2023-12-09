@@ -6,7 +6,8 @@ import { Contract, providers, Signer } from "ethers"
 import { hexlify } from "ethers/lib/utils"
 import { useEffect, useState } from "react"
 import { createRoot } from "react-dom/client"
-import Greeter from "../../contracts/build/contracts/contracts/Greeter.sol/Greeter.json"
+// import Greeter from "../../contracts/build/contracts/contracts/Greeter.sol/Greeter.json"
+// import 
 import theme from "../styles"
 import GroupStep from "./components/GroupStep"
 import IdentityStep from "./components/IdentityStep"
@@ -28,7 +29,7 @@ function App() {
                 method: "wallet_switchEthereumChain",
                 params: [
                     {
-                        chainId: hexlify(Number(process.env.ETHEREUM_CHAIN_ID!)).replace("0x0", "0x")
+                      chainId: hexlify(Number(process.env.ETHEREUM_CHAIN_ID!)).replace("0x0", "0x")
                     }
                 ]
             })

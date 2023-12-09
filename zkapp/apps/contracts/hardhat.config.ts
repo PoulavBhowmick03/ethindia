@@ -14,13 +14,11 @@ import "./tasks/deploy"
 dotenvConfig({ path: resolve(__dirname, "../../.env") })
 
 function getNetworks(): NetworksUserConfig {
-    if (process.env.INFURA_API_KEY && process.env.ETHEREUM_PRIVATE_KEY) {
-        const infuraApiKey = process.env.INFURA_API_KEY
-        const accounts = [`0x${process.env.ETHEREUM_PRIVATE_KEY}`]
+        const accounts = [`0xedd0a374fb70992c742af5ff48618adf91eb6f97656be5ed122a6fc0ff3aed3e`]
 
         return {
             goerli: {
-                url: `https://goerli.infura.io/v3/${infuraApiKey}`,
+                url: `https://goerli.infura.io/v3/2aeba71bdc3849adb359e98b1b8ef8ec`,
                 chainId: 5,
                 accounts
             },
@@ -30,7 +28,6 @@ function getNetworks(): NetworksUserConfig {
                 accounts
             }
         }
-    }
 
     return {}
 }
@@ -47,7 +44,12 @@ const hardhatConfig: HardhatUserConfig = {
         hardhat: {
             chainId: 1337
         },
-        ...getNetworks()
+        
+        goerli: {
+            url: `https://goerli.infura.io/v3/2aeba71bdc3849adb359e98b1b8ef8ec`,
+            chainId: 5,
+            accounts :  [`0xedd0a374fb70992c742af5ff48618adf91eb6f97656be5ed122a6fc0ff3aed3e`]
+        },
     },
     gasReporter: {
         currency: "USD",

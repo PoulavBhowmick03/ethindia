@@ -1,25 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import {
-  ChakraProvider,
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
-  AccordionIcon,
-  Input,
   Container,
-  Heading,
   Box,
-  Button,
   Text,
-  Link,
   VStack,
-  Code,
   Grid,
-  Flex,
   Spacer,
 } from '@chakra-ui/react'
-import {useLocation} from 'react-router-dom'
 import StepsComponent from './StepsComponent'
 import VerifyStep from './VerifyStep'
 import ClaimStep from './ClaimStep'
@@ -44,11 +31,6 @@ export default function AppContainer() {
         {/* <ColorModeSwitcher justifySelf="flex-end" /> */}
         <VStack spacing={9} minWidth="300px" width="75vw" justifySelf="center">
             <VStack spacing={1} width="100%">
-              <Spacer />
-              <Spacer />
-              <Spacer />
-            <Text alignSelf="start" textAlign="left" fontSize="4xl" fontWeight="bold">Get your Menshen ID</Text>
-            <Text alignSelf="start" textAlign="left" fontSize="2xl">Menshen ID is a zero-knowledge credential that proves that you are a human without sharing any of your personal data.</Text>
             </VStack>
             <StepsComponent activeStep={step}/>
             <Container px={10} py={6} maxWidth="inherit" border="1px solid #E2E8F0">

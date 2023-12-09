@@ -1,25 +1,10 @@
 import React, { useEffect, useState} from 'react'
 import {
   useDisclosure,
-  ChakraProvider,
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
-  AccordionIcon,
-  Input,
   Container,
-  Heading,
   Box,
   Button,
   Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  GridItem,
-  theme,
-  Spacer,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -50,8 +35,6 @@ export default function VerifyStep({incrementStep, faceDescriptor, setFaceDescri
 
   return(
     <>
-      <Text fontSize="3xl" fontWeight="bold" textAlign="left">Verify your personhood</Text>
-      <Text textAlign="left">Scan your face to prove you're human. You will receive the same credential every time you go through this process.</Text>
       <Container>
         {renderStep()}
       </Container>
