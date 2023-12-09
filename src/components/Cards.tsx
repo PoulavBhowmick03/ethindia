@@ -4,99 +4,47 @@ import { LinearGradient } from 'react-text-gradients';
 import Storage from './images/storage.png';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import styled from 'styled-components';
-
-const Container = styled.div`
-  text-align: center;
-  padding: 20px;
-`;
-
-const Title = styled.h1`
-  font-size: 36px;
-  margin-bottom: 20px;
-  color: #fff;
-  background: linear-gradient(to left, #17acff, #ff68f0);
-  padding: 10px;
-  border-radius: 8px;
-`;
-
-const CardsContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-top: 30px;
-`;
-
-const Card = styled.div`
-  background-color: #233;
-  border-radius: 12px;
-  margin: 20px;
-  padding: 20px;
-  text-align: center;
-  cursor: pointer;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  max-width: 300px;
-  width: 100%;
-
-  &:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  }
-`;
-
-const CardImage = styled(Image)`
-  border-radius: 12px;
-`;
-
-const CardTitle = styled.h2`
-  font-size: 24px;
-  color: white;
-  margin-top: 16px;
-`;
-
-const Button = styled.button`
-  height: 40px;
-  width: 150px;
-  color: white;
-  border-radius: 8px;
-  font-weight: bold;
-  background-color: #17acff;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-
-  &:hover {
-    background-color: #ff68f0;
-  }
-`;
 
 export default function Cards() {
   const router = useRouter();
 
   return (
-    <Container>
-      <Title>
-        <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
-          What We Offer
-        </LinearGradient>
-      </Title>
-      <CardsContainer>
-        <Card onClick={() => router.push('/dao')}>
-          <CardImage src={Storage} width={300} height={200}></CardImage>
-          <CardTitle>DAO</CardTitle>
-          <Button>Explore DAO</Button>
-        </Card>
-        <Card onClick={() => router.push('/room')}>
-          <CardImage src={CardPhoto} width={300} height={200}></CardImage>
-          <CardTitle>1-1 Interaction</CardTitle>
-          <Button>Join Room</Button>
-        </Card>
-        <Card>
-          <CardImage src={CardPhoto} width={300} height={200}></CardImage>
-          <CardTitle>Sex</CardTitle>
-          <Button>Explore</Button>
-        </Card>
-      </CardsContainer>
-    </Container>
+    <div className="text-center p-8" style={{borderRadius:"0.4rem" }} >
+      <h1 className="text-3xl mb-8 text-white bg-gradient-to-r from-blue-500 to-pink-500 p-4 rounded-md">
+          WHAT WE OFFER
+      </h1>
+
+      <div className="flex justify-around items-center flex-wrap mt-8 p-6">
+        <div
+          className="bg-blue-800 rounded-lg p-8 cursor-pointer transition-transform transition-shadow max-w-md w-full hover:scale-105 hover:shadow-md"
+          onClick={() => router.push('/dao')}
+        >
+          <Image alt='images of the cards ' src={Storage} width={300} height={200} className="rounded-md" />
+          <h2 className="text-2xl text-white mt-4">DAO</h2>
+          <button className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-md font-bold hover:bg-pink-500 transition-background">
+            Explore DAO
+          </button>
+        </div>
+
+        <div
+          className="bg-blue-800 rounded-lg p-8 cursor-pointer transition-transform transition-shadow max-w-md w-full hover:scale-105 hover:shadow-md"
+          onClick={() => router.push('/room')}
+        >
+          <Image alt='images of the cards ' src={CardPhoto} width={300} height={200} className="rounded-md" />
+          <h2 className="text-2xl text-white mt-4">1-1 Interaction</h2>
+          <button className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-md font-bold hover:bg-pink-500 transition-background">
+            Join Room
+          </button>
+        </div>
+
+        <div className="bg-blue-800 rounded-lg p-8 max-w-md w-full transition-transform transition-shadow hover:scale-105 hover:shadow-md">
+          <Image alt='images of the cards ' src={CardPhoto} width={300} height={200} className="rounded-md" />
+          <h2 className="text-2xl text-white mt-4">Quadratic Funding</h2>
+          <button className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-md font-bold hover:bg-pink-500 transition-background">
+            Explore
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }

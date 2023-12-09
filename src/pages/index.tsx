@@ -45,7 +45,7 @@ export default function Home() {
 
 
   return (
-    <div className={Style.background} >
+    <div className={Style.background}  style={{maxWidth:"100%"}}  >
       <Navbar/>
       {anonAadhaar?.status==='logged-out'&&<main className="flex flex-col items-center gap-8 bg-white rounded-2xl max-w-screen-sm mx-auto h-[24rem] md:h-[20rem] p-8">
         <h1 className="font-bold text-2xl">Welcome to Anon Aadhaar Example</h1>
@@ -65,13 +65,12 @@ export default function Home() {
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
   </LinearGradient>
 </h1>
-<div style={{paddingLeft:"-110px"}}>
-<ConnectButton/>
+<div style={{paddingLeft:"-120px"}}>
 
 </div>
 </div>
     <div style={{display:"flex",justifyContent:'center',alignItems:"center",width:"50vw",}}>
-      <Image style={{height:500, width:500, paddingRight:" -121px"}} src={bgI}></Image>
+      <Image alt="logo image" style={{height:350, width:450, paddingRight:" -121px" , borderRadius:'2rem' , zIndex:'11111'}} src={bgI}></Image>
       </div>
     </div>
     <Cards/>
