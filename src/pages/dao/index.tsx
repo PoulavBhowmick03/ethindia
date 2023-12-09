@@ -8,7 +8,7 @@ const HomePage: React.FC = () => {
   const [pincode, setPincode] = useState<string>('');
 
   const handlePincodeSubmit = () => {
-    router.push(`/forum/${pincode}`);
+    router.push(`/dao/forum`);
   };
 
   return (

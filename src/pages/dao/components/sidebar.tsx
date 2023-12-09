@@ -28,7 +28,7 @@ const Sidebar: React.FC = () => {
         </li>
         
         <li>
-          <a href="/dao/forum" className="flex items-center p-3 text-gray-400 rounded-md hover:bg-gray-800 hover:text-white">
+          <a href="/dao/vote" className="flex items-center p-3 text-gray-400 rounded-md hover:bg-gray-800 hover:text-white">
             <HiOutlineUserCircle className="text-2xl mr-3" />
             {open && 'Forum'}
           </a>
