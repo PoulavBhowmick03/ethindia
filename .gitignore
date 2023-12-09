@@ -33,4 +33,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-./
+
+./public/circuit_final.zkey
