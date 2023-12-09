@@ -39,29 +39,32 @@ const View: React.FC<ViewProps> = () => {
   };
   return (
     
-      <div className="h-96 w-96" >
-        <div style={{display:'flex',justifyContent:'center',alignItems:'center', width:"100vw"}}>
-        <LocalPeer />
+      <div className="w-95 p-4" >
+        <div className="grid grid-cols-2 gap-3" style={{justifyContent:'center',alignItems:'center', width:"100vw"}}>
+        <LocalPeer  />
         {peerIds.map((peerId) => (
           <RemotePeer peerId={peerId}  key={`remote-peer-${peerId}`} />
         ))}
       </div>
+      <div className="flex w-94 justify-center align-center">
       <button
       className={Style.btn}
         type="button"
         onClick={() => (stream ? handleDisableVideo() : handleVideo())}
-        style={{color:'white',padding:10,borderRadius:15,margin:20}}
+        style={{color:'white',padding:10,borderRadius:15,marginRight:20,marginTop:20}}
+        
       >
         {stream ? "Disable Video" : "Enable Video"}
       </button>
       <button
       className={Style.btn}
         type="button"
-        style={{color:'white',padding:10,borderRadius:15,margin:20}}
+        style={{color:'white',padding:10,borderRadius:15,marginTop:20}}
         onClick={() => (isAudioOn ? handledisableAudio() : handleAudio())}
       >
-        {isAudioOn ? "disable Audio" : "enable Audio"}
+        {isAudioOn ? "Disable Audio" : "Enable Audio"}
       </button>
+      </div>
     </div>
   );
 };

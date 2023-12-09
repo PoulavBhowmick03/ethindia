@@ -2,7 +2,6 @@ import React from 'react'
 import CardPhoto from './images/cardmockphoto.jpg'
 import { LinearGradient } from 'react-text-gradients'
 import Storage from './images/storage.png'
-import { useNavigate } from 'react-router-dom'
 import Style from './App.module.css'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -20,16 +19,16 @@ export default function Cards() {
       <div style={{display:"flex",justifyContent:'center',alignItems:'center'}}>
        <div className={Style.card}>
         <Image src={Storage} style={{borderRadius:5}}></Image>
-        <div><h1 style={{fontSize:18,color:"white"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</h1></div>
+        <div><h1 style={{fontSize:18,color:"white"}}>DAO</h1></div>
         <div>
-        <button className={Style.btn} style={{height:40,width:100,color:"white",borderRadius:10,fontWeight:"bold"}} onClick={()=>{ router.push('/Room/fge-bxdp-hwr')}}>Go there</button>
+        <button className={Style.btn} style={{height:40,width:100,color:"white",borderRadius:10,fontWeight:"bold"}} onClick={()=>{ router.push('/dao')}}>Go there</button>
         </div>
        </div>
        <div className={Style.card}>
        <Image src={CardPhoto} style={{borderRadius:5}}></Image>
         <div><h1 style={{fontSize:18,color:"white"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</h1></div>
         <div>
-        <button className={Style.btn} style={{height:40,width:100,color:"white",borderRadius:10,fontWeight:"bold"}}>Go there</button>
+        <button className={Style.btn} style={{height:40,width:100,color:"white",borderRadius:10,fontWeight:"bold"}} onClick={()=>{ router.push('/Room/fge-bxdp-hwr')}} >Go there</button>
         </div>
        </div>
        <div className={Style.card}>
