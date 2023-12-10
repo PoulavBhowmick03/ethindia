@@ -16,30 +16,13 @@ const Poll: React.FC<IProps> = ({ waku }) => {
   );
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
-  useEffect(() => {
-    const initializeVotes = async () => {
-      const storedVotes = await retrieveExistingVotes(waku);
-      if (storedVotes) {
-        setVoteCounts(storedVotes);
-      }
-    };
-
-    initializeVotes();
-  }, [waku]);
-
   const handleVoteSend = async (optionIndex: number) => {
-    if (vote === null) {
-      setVoteCounts((prevCounts) => {
-        const newCounts = [...prevCounts];
-        newCounts[optionIndex]++;
-        sendVote(waku, {
-          id: questions[currentQuestionIndex].id,
-          question: questions[currentQuestionIndex].question,
-          answers: [questions[currentQuestionIndex].answers[optionIndex]],
-        });
-        return newCounts;
-      });
-    }
+    setVote(optionIndex);
+    sendVote(waku, {
+      id: questions[currentQuestionIndex].id,
+      question: questions[currentQuestionIndex].question,
+      answers: [questions[currentQuestionIndex].answers[optionIndex]],
+    });
   };
 
   const processReceivedVote = (pollMessage: IPollMessage) => {
@@ -60,6 +43,7 @@ const Poll: React.FC<IProps> = ({ waku }) => {
   useEffect(() => {
     const subscribeToVotes = async () => {
       console.log("Poll: Listening for votes");
+      await retrieveExistingVotes(waku, processReceivedVote);
       await receiveVotes(waku, processReceivedVote);
     };
 
@@ -75,8 +59,9 @@ const Poll: React.FC<IProps> = ({ waku }) => {
     <div className="flex h-screen">
       <Sidebar />
       <div className="bg-gray-900 text-white flex items-center justify-center h-screen w-screen">
+        
         <div className="container mx-auto px-4">
-        <div className="flex justify-between text-center mb-10 space-x-3 items-center">
+          <div className="flex justify-between text-center mb-10 space-x-3 items-center">
             <div className="flex space-x-2 items-center">
               <svg
                 width="50"
@@ -146,7 +131,8 @@ const Poll: React.FC<IProps> = ({ waku }) => {
                 Next Question
               </button>
             )}
-          </div>        </div>
+          </div>
+        </div>
       </div>
     </div>
   );
