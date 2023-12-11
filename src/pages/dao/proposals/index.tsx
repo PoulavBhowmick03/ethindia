@@ -50,7 +50,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex h-full">
+    <div className="flex h-full bg-slate-800">
       <Sidebar />
       <div className="flex flex-col flex-grow bg-slate-900a text-white">
         {/* Header */}

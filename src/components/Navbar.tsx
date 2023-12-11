@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from 'react';
 import Style from "./App.module.css";
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { AnonAadhaarProof, LogInWithAnonAadhaar, useAnonAadhaar } from "anon-aadhaar-react";
 
 export default function Navbar() {
  
@@ -21,7 +22,9 @@ export default function Navbar() {
             <li style={{  float: 'left'}}>
                 <a href='#' className={Style.x} style={{'display': 'block', 'color': 'white', textAlign: 'center', padding: '10px',paddingRight:'3rem',textDecoration:"none",fontSize:20,height:50,width:100,borderRadius:20}}>Contact</a>
             </li>
-            <li><ConnectButton/>
+            <li><ConnectButton/></li>
+            <li>        <LogInWithAnonAadhaar />
+
 </li>
            </ul>
         </div>

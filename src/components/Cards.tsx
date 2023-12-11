@@ -28,7 +28,7 @@ export default function Cards() {
 
         <div
           className="bg-blue-800 rounded-lg p-8 cursor-pointer transition-transform transition-shadow max-w-md w-full hover:scale-105 hover:shadow-md"
-          onClick={() => router.push('/room')}
+          onClick={() => router.push('/video')}
         >
           <Image alt='images of the cards ' src={CardPhoto} width={300} height={200} className="rounded-md" />
           <h2 className="text-2xl text-white mt-4">1-1 Interaction</h2>

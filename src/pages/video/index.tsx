@@ -11,22 +11,19 @@ type Props = {
 
 export default function Room({ token }: Props) {
   const { joinRoom, state, leaveRoom } = useRoom();
+  const [input, setInput] = useState("");
   const mountRef = useRef(false);
+
   const router = useRouter();
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   const handleJoinRoom = async () => {
     console.warn({ state });
 
-    if (state !== "idle" || !selectedOption) return;
-
+    if (state !== "idle") return;
     const roomId = router.query.roomId?.toString() || "";
     await joinRoom({
-      roomId,
+      roomId: "fge-bxdp-hwr",
       token,
-      metadata: {
-        selectedOption,
-      },
     });
   };
 
@@ -34,47 +31,61 @@ export default function Room({ token }: Props) {
     if (!mountRef.current) handleJoinRoom();
 
     mountRef.current = true;
-  }, [selectedOption]);
+  }, []);
 
   const handleLeaveRoom = async () => {
     console.log("room left");
     await leaveRoom();
   };
 
-  const handleOptionClick = (option: string) => {
-    setSelectedOption(option);
-    // You can prompt the user to enable video here
-    // You can use browser's native API or any library you prefer
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value);
+  };
+
+  const handleSendMessage = async() => {
+    try {
+      // Check if the camera permission is granted
+      const cameraPermission = await navigator.permissions.query({ name: 'camera' });
+  
+      if (cameraPermission.state === 'granted') {
+        // Camera permission is already granted
+        console.log('Camera permission granted');
+      } else if (cameraPermission.state === 'prompt') {
+        // Camera permission is not yet determined, prompt the user to grant it
+        await navigator.mediaDevices.getUserMedia({ video: true });
+        console.log('Camera permission granted');
+      } else {
+        // Camera permission is denied or unavailable
+        console.log('Camera permission denied or unavailable');
+      }
+    } catch (error) {
+      console.error('Error asking for camera permission:', error);
+    }
+      console.log("Message sent:", input);
+    setInput("");
+    
   };
 
   return (
-    <main className={Style.background} style={{ height: "100vh" }}>
-      <div className="flex justify-center pt-4">
-          <div
-            className=" bg- rounded-lg shadow-lg p-4 w-96 h-44"
-            onClick={() => handleOptionClick("blockchain")}
-          >
-            <div className="flex">
-            <div className="w-24 flex align-middle justify-center mr-16 ml-4 bg-slate-100 rounded-lg mb-4">Blockchain</div>
-            <div className="w-24 flex align-middle justify-center mr-16 ml-4 bg-slate-100 rounded-lg mb-4">Blockchain</div> 
-            </div>
-            <div className="flex pt-4">
-            <div className="w-24 flex align-middle justify-center mr-16 ml-4 bg-slate-100 rounded-lg mb-4">Blockchain</div>
-            <div className="w-24 flex align-middle justify-center mr-16 ml-4 bg-slate-100 rounded-lg mb-4">Blockchain</div> 
-            </div>
-           
-        </div>
-        </div>
+    <main className={Style.background} style={{ height: "200vh" }}>
       <View />
       <div className="h-40 w-94 flex justify-center align-center">
-        
+        <input
+          type="text"
+          value={input}
+          onChange={handleInputChange}
+          placeholder="Enter your message..."
+          style={{ marginRight: "10px" }}
+        />
         <button
-          style={{
-            color: "white",
-            padding: 10,
-            borderRadius: 15,
-            marginTop: 20,
-          }}
+          style={{ color: "white", padding: 10, borderRadius: 15, marginTop: 20 }}
+          className={Style.btn}
+          onClick={handleSendMessage}
+        >
+          Send Message
+        </button>
+        <button
+          style={{ color: "white", padding: 10, borderRadius: 15, marginTop: 20 }}
           className={Style.btn}
           onClick={handleLeaveRoom}
         >
@@ -86,5 +97,35 @@ export default function Room({ token }: Props) {
 }
 
 export const getServerSideProps = async () => {
-  // ... (no changes here)
+  const accessToken = new AccessToken({
+    apiKey: "Lvtt3L8xT6UhlFLjGlyAgXVd7IF2-TzF",
+    roomId: "fge-bxdp-hwr",
+    role: Role.HOST,
+    permissions: {
+      admin: true,
+      canConsume: true,
+      canProduce: true,
+      canProduceSources: {
+        cam: true,
+        mic: true,
+        screen: true,
+      },
+      canRecvData: true,
+      canSendData: true,
+      canUpdateMetadata: true,
+    },
+    options: {
+      metadata: {
+        walletAddress: "harsh",
+      },
+    },
+  });
+
+  const token = await accessToken.toJwt();
+
+  console.log({ token });
+
+  return {
+    props: { token },
+  };
 };
